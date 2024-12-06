@@ -1,3 +1,9 @@
+<?php
+  require_once 'connection/connection.php';
+?>
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +55,13 @@
           <form class="d-flex" role="search">
             <h4 class="me-2" style="margin-top: 5px;"><a style="text-decoration: none;color:darkgray;font-weight:200" href="">Leaderboard</a></h4>
             <a class="btn btn-outline-dark me-2" href="">Put a Quiz</a>
-            <a class="btn" id="login" href="login.php">Login</a>
+            <?php
+              if(isset($_SESSION['user_id'])){
+                echo "<a class='btn' id='login' href='logout.php'>Logout</a>";
+              }else{
+                echo "<a class='btn' id='login' href='login.php'>Login</a>";
+              }
+            ?>
           </form>
         </div>
       </div>
@@ -58,7 +70,7 @@
   </div>
 
   <div class="container">
-    <h1 class="text-center" style="margin-top: 18px;margin-bottom:80px;">Hi Kavinda!, Welcome to <span class="brandname">ProQuiZ</span></h1>
+    <h1 class="text-center" style="margin-top: 18px;margin-bottom:80px;">Hi <?php if(isset($_SESSION['user_id'])){echo" " . $_SESSION['fname'];} ?>, Welcome to <span class="brandname">ProQuiZ</span></h1>
 
     <div class="row">
       <div class="col-md-6 mb-4">

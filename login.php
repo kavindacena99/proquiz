@@ -2,76 +2,24 @@
     require_once 'connection/connection.php';
 ?>
 <?php
+    session_start();
+
     if(isset($_POST['login'])){
         $mail = mysqli_real_escape_string($connection,$_POST['mail']);
         $pswd = mysqli_real_escape_string($connection,$_POST['pswd']);
 
-        /*
+        $sql = "SELECT * FROM users WHERE mail='{$mail}'";
+        $result_set = mysqli_query($connection, $sql);
 
-        if (isset($_POST['login'])) {
-    $mail = mysqli_real_escape_string($connection, $_POST['mail']);
-    $pswd = mysqli_real_escape_string($connection, $_POST['pswd']);
+        if($result_set && mysqli_num_rows($result_set) == 1){
+            $row = mysqli_fetch_assoc($result_set);
+            $hashedPassword = $row['pswd'];
 
-    if ($mail != "" && $pswd != "") {
-        // Fetch the user's hashed password from the database
-        $sql1 = "SELECT * FROM users WHERE mail='{$mail}'";
-        $result_set1 = mysqli_query($connection, $sql1);
-
-        if ($result_set1 && mysqli_num_rows($result_set1) == 1) {
-            $row = mysqli_fetch_assoc($result_set1);
-            $hashedPassword = $row['pswd']; // Assuming 'pswd' stores the hashed password
-            
-            // Verify the entered password with the hashed password
-            if (password_verify($pswd, $hashedPassword)) {
-                $usertype = $row['usertype']; // Assuming 'usertype' exists in the table
-
-                if ($usertype == 'admin') {
-                    // Redirect admin to the dashboard
-                    header("Location: dashboard.php");
-                } else {
-                    // Set session for regular user
-                    $_SESSION['user_id'] = $row['userid'];
-                    $_SESSION['fname'] = $row['fname'];
-                    header("Location: index.php");
-                }
-                exit(); // Stop further execution after redirect
-            } else {
-                echo "<div class='alert alert-danger' role='alert'>Invalid Email or Password</div>";
-            }
-        } else {
-            echo "<div class='alert alert-danger' role='alert'>Invalid Email or Password</div>";
-        }
-    } else {
-        echo "<div class='alert alert-danger' role='alert'>Please fill in all fields</div>";
-    }
-}
-
-        */
-
-        if($mail != "" && $pswd != ""){
-            $sql1 = "SELECT * FROM users WHERE mail='{$mail}' AND pswd='{$pswd}'";
-            $result_set1 = mysqli_query($connection,$sql1);
-
-            /*
-            if(isset($result_set1)){
-                echo "<div class='alert alert-danger' role='alert'>" . 
-                            "Invalid Email or Password" . "</div>";
-            }
-            */
-
-            if(mysqli_num_rows($result_set1) == 1){
-                $row = mysqli_fetch_assoc($result_set1);
-                //$usertype = $row['usertype'];
-                $usertype = "";
-
-                if($usertype == 'admin'){
-                    //$_SESSION['user_id'] = $row['userid'];
-                    header("Location: dashboard.php");
-                }else{
-                    $_SESSION['user_id'] = $row['userid'];
-                    $_SESSION['fname'] = $row['fname'];
-                    header("Location: index.php");
-                }
+            if(password_verify($pswd,$hashedPassword)){
+                $_SESSION['user_id'] = $row['userid'];
+                $_SESSION['fname'] = $row['fname'];
+                header("Location: index.php");
+                // if this is incorrect there will be an error
             }
         }
     }
