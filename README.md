@@ -1,2 +1,2 @@
 # proquiz
-this is proquiz
+CSC3132 Web Project
