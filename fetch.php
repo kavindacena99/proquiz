@@ -18,8 +18,7 @@
         }
     }
 
-    // Return questions as JSON
+    // get data with json
     header('Content-Type: application/json');
-    echo json_encode($questions[0]);
-    //echo json_encode($questions[0]["id"]);
+    echo json_encode($questions);
 ?>

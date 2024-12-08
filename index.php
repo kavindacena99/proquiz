@@ -53,7 +53,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
           <form class="d-flex" role="search">
-            <h4 class="me-2" style="margin-top: 5px;"><a style="text-decoration: none;color:darkgray;font-weight:200" href="">Leaderboard</a></h4>
+            <h4 class="me-2" style="margin-top: 5px;"><a style="text-decoration: none;color:darkgray;font-weight:200" href="quizes.php">Leaderboard</a></h4>
             <a class="btn btn-outline-dark me-2" href="">Put a Quiz</a>
             <?php
               if(isset($_SESSION['user_id'])){
