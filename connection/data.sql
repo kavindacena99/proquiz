@@ -6,5 +6,6 @@ create table users(userid INT primary key auto_increment,fname varchar(255),lnam
 create table quizzes(qid INT primary key auto_increment,question text,options text,correct_option INT,category varchar(50),qlang varchar(25));
 
 insert into quizzes (question,options,correct_option,category,qlang) values('What is the best programming language?','python,pascal,perl,php',2,'Normal','pascal');
+insert into quizzes (question,options,correct_option,category,qlang) values('What is the best data science language?','python,pascal,perl,php',4,'Normal','python');
 
 
