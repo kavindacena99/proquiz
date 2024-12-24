@@ -130,7 +130,6 @@
         }
 
         currentQuestionIndex++;
-        updateScore();
 
         if (currentQuestionIndex < questions.length) {
           loadQuestion(currentQuestionIndex);
@@ -164,10 +163,6 @@
           document.getElementById("marks").innerHTML = "Your marks is: " + marks;
         }
       });
-
-      function updateScore(){
-        document.getElementById("score").innerText = `${marks}`;
-      }
 
       fetchQuestions();
 

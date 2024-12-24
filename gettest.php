@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Take a test</title>
     <style>
         .form-label{
             font-weight: 500;
@@ -45,13 +45,11 @@
                 <select class="form-select" aria-label="Default select example" name="lang">
                     <option selected>Select a Programming Language</option>
                     <option value="java">Java</option>
-                    <option value="front">HTML CSS Javascript</option>
+                    <option value="js">Javascript</option>
                     <option value="python">Python</option>
                     <option value="php">PHP</option>
                     <option value="cpp">C++</option>
-                    <option value="c">C</option>
                     <option value="mysql">MySQL</option>
-                    <option value="pascal">Pascal</option>
                     <option value="normal">Any Language</option>
                 </select>
             </div>

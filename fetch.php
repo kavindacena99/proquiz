@@ -7,8 +7,6 @@
     $noOfQuizes = $_GET['noofquizes'];
     $created = $_GET['created'];
 
-    /*
-
     if($category == "normal"){
         $sql = "SELECT * FROM quizzes WHERE qlang = '{$lang}' LIMIT $noOfQuizes";
     }elseif($lang == "normal"){
@@ -18,9 +16,7 @@
     }else{
         $sql = "SELECT * FROM quizzes WHERE category = '{$category}' AND qlang = '{$lang}' LIMIT $noOfQuizes";
     }
-        */
 
-    $sql = "SELECT * FROM quizzes";
     $result = mysqli_query($connection,$sql);
 
     $questions = [];

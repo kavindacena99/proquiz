@@ -99,7 +99,7 @@
                       <div class="card-body">
                           <h5 class="card-title">YouTube</h5>
                           <p class="card-text">Learn by watching videos and practicing hands-on programming.</p>
-                          <a href="https://www.youtube.com/results?search_query=programming+quizzes" class="btn btn-outline-dark btn-sm">Explore</a>
+                          <a href="https://www.youtube.com/results?search_query=learn+computer+programming+for+beginners" class="btn btn-outline-dark btn-sm">Explore</a>
                       </div>
                   </div>
               </div>
