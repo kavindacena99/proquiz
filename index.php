@@ -13,24 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
   <style>
-    .brandname{
-      font-family: "Montserrat", sans-serif;
-      font-weight: bolder;
-    }
-    .navborder{
-      border-bottom: 1px solid black;
-    }
-
-    #login{
-      color: white;
-      background-color: black;
-    }
-    #login:hover{
-      border: 1px solid black;
-      color: black;
-      background-color: white;
-      font-weight: 800;
-    }
     .card {
       border: none;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -42,32 +24,7 @@
   </style>
 </head>
 <body>
-  <div class="container-fluid">
-    <!--nav-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navborder">
-      <div class="container-fluid">
-        <a class="navbar-brand brandname" style="font-size: 28px;" href="index.php">ProQuiZ</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-          <form class="d-flex" role="search">
-            <h4 class="me-2" style="margin-top: 5px;"><a style="text-decoration: none;color:darkgray;font-weight:200" href="quizes.php">Leaderboard</a></h4>
-            <a class="btn btn-outline-dark me-2" href="">Put a Quiz</a>
-            <?php
-              if(isset($_SESSION['user_id'])){
-                echo "<a class='btn' id='login' href='logout.php'>Logout</a>";
-              }else{
-                echo "<a class='btn' id='login' href='login.php'>Login</a>";
-              }
-            ?>
-          </form>
-        </div>
-      </div>
-    </nav>
-
-  </div>
+  <?php require_once 'nav.php'; ?>
 
   <div class="container">
     <h1 class="text-center" style="margin-top: 18px;margin-bottom:80px;">Hi <?php if(isset($_SESSION['user_id'])){echo" " . $_SESSION['fname'];} ?>, Welcome to <span class="brandname">ProQuiZ</span></h1>
@@ -77,14 +34,14 @@
         <div class="card p-3">
             <h4 class="card-title" style="font-weight: 500;">Take Quizzes</h4>
             <p class="card-text">Challenge yourself with AI-generated quizzes, user-contributed quizzes, or curated quizzes to test and improve your programming knowledge.</p>
-            <a href="#" class="btn btn-dark">Take the Quiz</a>
+            <a href="gettest.php" class="btn btn-dark">Take the Quiz</a>
         </div>
       </div>
       <div class="col-md-6 mb-4">
         <div class="card p-3">
             <h4 class="card-title" style="font-weight: 500;">Contribute Quizzes</h4>
             <p class="card-text">Share your knowledge with the ProQuiZ community by contributing quizzes on programming concepts and languages.</p>
-            <a href="#" class="btn btn-dark">Put a Quiz</a>
+            <a href="putquiz.php" class="btn btn-dark">Put a Quiz</a>
         </div>
       </div>
     </div>

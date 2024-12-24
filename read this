@@ -1,1 +1,24 @@
 Scores must be shown after ending of quizzes and what are the correct and incorrect answers
+
+
+
+<!--
+              <h2>Question ${index + 1} of ${questions.length}</h2>
+          <p class="question-text">${question.question}</p>
+          <ul class="options-list">
+            ${question.options
+              .map(
+                (option, i) => `
+              <li>
+                <input type="radio" name="answer" id="option${i}" value="${i}">
+                <label for="option${i}">${option}</label>
+              </li>
+            `
+              )
+              .join("")}
+          </ul>
+          <input type="hidden" id="correct-answer" value="${question.correct_option}">
+            -->
+
+
+add a fieldname about who has added the question and show it in the quiz result page

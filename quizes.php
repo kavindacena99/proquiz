@@ -1,6 +1,14 @@
 <?php
     require_once 'connection/connection.php';
 ?>
+<?php
+  session_start();
+
+  $lang = $_GET['lang'];
+  $category = $_GET['category'];
+  $noOfQuizes = $_GET['noofquizes'];
+  $created = $_GET['created'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +38,8 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             <form class="d-flex" role="search">
-              <h4 class="me-2" style="margin-top: 5px;color:darkgrey;">Category: <span id="cat" class="notations">OOP</span> &nbsp; Programming Language: <span id="lang" class="notations">Java</span> &nbsp; Scores: <span id="score"  class="notations">0</span></h4>
-            </form>
+              <h4 class="me-2" style="margin-top: 5px;color:darkgrey;">Category: <span id="cat" class="notations">OOP</span> &nbsp; Programming Language: <span id="lang" class="notations">Java</span></h4>
+            </form>        
           </div>
         </div>
       </nav>
@@ -43,6 +51,9 @@
           <div class="col-lg-8 col-md-10 col-sm-12">
             <div class="quiz-container p-4">
                 <div id="quiz-container">
+
+                </div>
+                <div id="yourAnswers">
 
                 </div>
               <button id="next-btn" class="btn w-100 mt-3" style="background-color:darkslategray;color:white" disabled>Next Question</button>
@@ -61,7 +72,6 @@
       let currentQuestionIndex = 0;
       let marks = 0;
       let userAnswers = [];
-      //let correctAnswer;
 
       function loadQuestion(index) {
         const quizContainer = document.getElementById("quiz-container");
@@ -97,8 +107,14 @@
         );
       }
 
+      const lang = "<?php echo $lang; ?>";
+      const category = "<?php echo $category; ?>";
+      const noOfQuizes = "<?php echo $noOfQuizes; ?>";
+      const created = "<?php echo $created; ?>";
+
       function fetchQuestions(){
-          fetch("fetch.php").then(response => response.json()).then(data => { questions = data; loadQuestion(currentQuestionIndex); }).catch(error => console.error("Error fetching:", error));
+        const url = `fetch.php?category=${encodeURIComponent(category)}&language=${encodeURIComponent(lang)}&noofquizes=${encodeURIComponent(Number(noOfQuizes))}&created=${encodeURIComponent(created)}`;
+        fetch(url).then(response => response.json()).then(data => { questions = data; loadQuestion(currentQuestionIndex); }).catch(error => console.error("Error fetching:", error));
       }
 
       document.getElementById("next-btn").addEventListener("click", () => {
@@ -122,10 +138,30 @@
         } else {
           // we should implement parts to view marks and other things with redirecting other page
           document.getElementById("quiz-container").innerHTML = `
+            <h2 id="marks"></h2>
             <h2>You've completed the quiz!</h2>
             <p>Thank you for participating.</p>
           `;
+
+          /*
+          
+
+          document.getElementById("yourAnswers").innerHTML = `
+            <h2>Hi</h2>
+            <h2>Hi</h2>
+            <h2>Hi</h2>
+          `;
+
+          for(let i=0;i<3;i++){
+            document.getElementById("yourAnswers").innerHTML = `
+              <h2>Hi</h2>
+            `;
+          }
+
+          */
+
           document.getElementById("next-btn").style.display = "none";
+          document.getElementById("marks").innerHTML = "Your marks is: " + marks;
         }
       });
 

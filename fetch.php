@@ -2,6 +2,24 @@
     require_once 'connection/connection.php';
 ?>
 <?php
+    $lang = $_GET['language'];
+    $category = $_GET['category'];
+    $noOfQuizes = $_GET['noofquizes'];
+    $created = $_GET['created'];
+
+    /*
+
+    if($category == "normal"){
+        $sql = "SELECT * FROM quizzes WHERE qlang = '{$lang}' LIMIT $noOfQuizes";
+    }elseif($lang == "normal"){
+        $sql = "SELECT * FROM quizzes WHERE category = '{$category}' LIMIT $noOfQuizes";
+    }elseif($lang == "normal" && $category == "normal"){
+        $sql = "SELECT * FROM quizzes LIMIT $noOfQuizes";
+    }else{
+        $sql = "SELECT * FROM quizzes WHERE category = '{$category}' AND qlang = '{$lang}' LIMIT $noOfQuizes";
+    }
+        */
+
     $sql = "SELECT * FROM quizzes";
     $result = mysqli_query($connection,$sql);
 
