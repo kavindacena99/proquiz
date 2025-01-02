@@ -55,7 +55,7 @@
             <div class="card-body">
               <h5 class="card-title">Default Quizzes</h5>
               <p class="card-text">Explore expertly designed quizzes for various programming topics and languages.</p>
-              <a href="#" class="btn btn-dark">Take a Test</a>
+              <a href="gettest.php" class="btn btn-dark">Take a Test</a>
             </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
           <div class="card-body">
               <h5 class="card-title">User-Contributed Quizzes</h5>
               <p class="card-text">Test your skills with quizzes contributed by other users in the ProQuiZ community.</p>
-              <a href="#" class="btn btn-dark">Take a Test</a>
+              <a href="gettest.php" class="btn btn-dark">Take a Test</a>
           </div>
         </div>
       </div>
@@ -121,8 +121,8 @@
               <div class="row">
                   <div class="col-md-4">
                       <h5>Links</h5>
-                      <a href="" style="text-decoration: none;color:darkgray">Login</a><br>
-                      <a href="" style="text-decoration: none;color:darkgray">Leader Board</a><br>
+                      <a href="login.php" style="text-decoration: none;color:darkgray"><?php if(!isset($_SESSION['user_id'])){ echo "login";} ?></a><br>
+                      <a href="leaderboard.php" style="text-decoration: none;color:darkgray">Leader Board</a><br>
                   </div>
                   <div class="col-md-4">
                       <h5>Contact</h5>

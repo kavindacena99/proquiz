@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label for="name" class="form-label">Number of Quizes</label>
-                <input type="number" name="noofquizes" id="name" class="form-control" placeholder="Number of quizes">
+                <input type="number" name="noofquizes" id="name" class="form-control" placeholder="Number of quizes" max="10">
             </div><br>
             <button type="submit" class="btn btn-outline-dark me-2">Take the test</button>
         </form>

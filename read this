@@ -22,3 +22,82 @@ Scores must be shown after ending of quizzes and what are the correct and incorr
 
 
 add a fieldname about who has added the question and show it in the quiz result page
+
+
+
+//from this we create the part of calculating marks
+
+      /*
+        // Save the result to the server
+const resultData = {
+  totalFaced: questions.length,
+  correctAnswers: marks,
+  category: category,
+  language: lang,
+  created: created
+};
+
+fetch('save_results.php', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(resultData)
+})
+  .then(response => response.text())
+  .then(data => {
+    console.log("Results saved:", data);
+  })
+  .catch(error => console.error("Error saving results:", error));
+
+
+  <?php
+require_once 'connection/connection.php';
+
+$data = json_decode(file_get_contents('php://input'), true);
+
+if (isset($data['totalFaced']) && isset($data['correctAnswers'])) {
+    $totalFaced = $data['totalFaced'];
+    $correctAnswers = $data['correctAnswers'];
+    $category = $data['category'];
+    $language = $data['language'];
+    $created = $data['created'];
+
+    $sql = "INSERT INTO quiz_results (user_id, total_faced, correct_answers, category, language, created_date) 
+            VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    // Replace '1' with the actual user ID if you have user management implemented
+    $userId = 1; 
+
+    if ($stmt) {
+        $stmt->bind_param("iiisss", $userId, $totalFaced, $correctAnswers, $category, $language, $created);
+        if ($stmt->execute()) {
+            echo "Results saved successfully.";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+        $stmt->close();
+    } else {
+        echo "Error preparing statement: " . $conn->error;
+    }
+} else {
+    echo "Invalid data received.";
+}
+
+$conn->close();
+?>
+
+
+CREATE TABLE quiz_results (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    total_faced INT NOT NULL,
+    correct_answers INT NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    language VARCHAR(255) NOT NULL,
+    created_date DATETIME NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+      */

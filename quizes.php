@@ -166,6 +166,9 @@
 
       fetchQuestions();
 
+
+      
+
       console.log(marks);
     </script>
 </body>
