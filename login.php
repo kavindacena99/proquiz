@@ -15,11 +15,15 @@
             $row = mysqli_fetch_assoc($result_set);
             $hashedPassword = $row['pswd'];
 
-            if(password_verify($pswd,$hashedPassword)){
-                $_SESSION['user_id'] = $row['userid'];
-                $_SESSION['fname'] = $row['fname'];
-                header("Location: index.php");
-                // if this is incorrect there will be an error
+            if($row['role'] == 'admin'){
+                header("Location: admin.php");
+            }else{
+                if(password_verify($pswd,$hashedPassword)){
+                    $_SESSION['user_id'] = $row['userid'];
+                    $_SESSION['fname'] = $row['fname'];
+                    header("Location: index.php");
+                    // if this is incorrect there will be an error
+                }
             }
         }
     }

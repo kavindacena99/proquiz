@@ -101,13 +101,14 @@
                 <select class="form-select" aria-label="Default select example" name="lang">
                     <option selected>Select a Programming Language</option>
                     <option value="java">Java</option>
-                    <option value="front">HTML CSS Javascript</option>
+                    <option value="normal">HTML CSS</option>
+                    <option value="js">Javascript</option>
                     <option value="python">Python</option>
                     <option value="php">PHP</option>
                     <option value="cpp">C++</option>
                     <option value="c">C</option>
                     <option value="mysql">MySQL</option>
-                    <option value="all">All</option>
+                    <!-- <option value="all">All</option> -->
                 </select>
             </div>
 

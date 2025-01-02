@@ -36,10 +36,7 @@
         <div class="container-fluid">
           <a class="navbar-brand brandname" style="font-size: 28px;" href="index.php">ProQuiZ</a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <form class="d-flex" role="search">
-              <h4 class="me-2" style="margin-top: 5px;color:darkgrey;">Category: <span id="cat" class="notations">OOP</span> &nbsp; Programming Language: <span id="lang" class="notations">Java</span></h4>
-            </form>        
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul> 
           </div>
         </div>
       </nav>
@@ -165,9 +162,6 @@
       });
 
       fetchQuestions();
-
-
-      
 
       console.log(marks);
     </script>
