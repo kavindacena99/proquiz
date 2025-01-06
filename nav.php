@@ -34,15 +34,31 @@
         <!--nav-->
         <nav class="navbar navbar-expand-lg bg-body-tertiary navborder">
         <div class="container-fluid">
-            <a class="navbar-brand brandname" style="font-size: 28px;" href="index.php">ProQuiZ</a>
+            <?php
+                if(isset($_SESSION['user_id'])){
+                    if($_SESSION['usertype'] == 'admin'){
+                        echo "<a class='navbar-brand brandname' style='font-size: 28px;' href='admin.php'>ProQuiZ</a>";
+                    }else{
+                        echo "<a class='navbar-brand brandname' style='font-size: 28px;' href='index.php'>ProQuiZ</a>";
+                    }
+                }else{
+                    echo "<a class='navbar-brand brandname' style='font-size: 28px;' href='index.php'>ProQuiZ</a>";
+                }
+            ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             <form class="d-flex" role="search">
-                <h4 class="me-2" style="margin-top: 5px;"><a style="text-decoration: none;color:darkgray;font-weight:200" href="#">Leaderboard</a></h4>
-                <a class="btn btn-outline-dark me-2" href="putquiz.php">Put a Quiz</a>
+                <?php
+                    if(isset($_SESSION['user_id'])){
+                        if($_SESSION['usertype'] == 'user'){
+                            echo "<h4 class='me-2' style='margin-top: 5px;'><a style='text-decoration: none;color:darkgray;font-weight:200' href='myprofile.php'>My Profile</a></h4>";
+                            echo "<a class='btn btn-outline-dark me-2' href='putquiz.php'>Put a Quiz</a>";
+                        }
+                    }
+                ?>
                 <?php
                 if(isset($_SESSION['user_id'])){
                     echo "<a class='btn' id='login' href='logout.php'>Logout</a>";

@@ -1,6 +1,9 @@
 <?php
     require_once 'connection/connection.php';
 ?>
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,8 +50,7 @@
             </div>
             <div class="col-md-6">
                 <h3>Questions</h3>
-                <a href="addquestion.php" class="btn btn-primary">Add Question</a>
-                <a href="myquestions.php" class="btn btn-primary">My Questions</a>
+                <a href="addquestion.php" class="btn btn-dark">Add Question</a>
             </div>
         </div>
     </div>

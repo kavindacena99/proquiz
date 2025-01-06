@@ -9,8 +9,10 @@
         $sql = "SELECT * FROM quizpool WHERE qpid = $id";
         $result = mysqli_query($connection,$sql);
         $row = $result->fetch_assoc();
+
+        $user = $row['userid'];
         
-        $sql1 = "INSERT INTO quizzes (question, options, correct_option, category, qlang, createdby) VALUES ('{$row['question']}', '{$row['options']}', '{$row['correct_option']}', '{$row['category']}', '{$row['qlang']}', 1)";
+        $sql1 = "INSERT INTO quizzes (question, options, correct_option, category, qlang, createdby,userid) VALUES ('{$row['question']}', '{$row['options']}', '{$row['correct_option']}', '{$row['category']}', '{$row['qlang']}', 1,$user)";
         $result1 = mysqli_query($connection,$sql1);
 
         if(isset($result1)){

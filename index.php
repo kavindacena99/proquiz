@@ -24,10 +24,11 @@
   </style>
 </head>
 <body>
+  
   <?php require_once 'nav.php'; ?>
 
   <div class="container">
-    <h1 class="text-center" style="margin-top: 18px;margin-bottom:80px;">Hi <?php if(isset($_SESSION['user_id'])){echo" " . $_SESSION['fname'];} ?>, Welcome to <span class="brandname">ProQuiZ</span></h1>
+    <h1 class="text-center" style="margin-top: 18px;margin-bottom:80px;"><?php if(isset($_SESSION['user_id'])){echo"Hi " . $_SESSION['fname'];} ?>, Welcome to <span class="brandname">ProQuiZ</span></h1>
 
     <div class="row">
       <div class="col-md-6 mb-4">

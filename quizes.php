@@ -137,24 +137,9 @@
             <h2 id="marks"></h2>
             <h2>You've completed the quiz!</h2>
             <p>Thank you for participating.</p>
+            <a href="index.php" class="btn btn-dark">Go back to home</a>
+            <a href="gettest.php" class="btn btn-dark">Take another quiz</a>
           `;
-
-          /*
-          
-
-          document.getElementById("yourAnswers").innerHTML = `
-            <h2>Hi</h2>
-            <h2>Hi</h2>
-            <h2>Hi</h2>
-          `;
-
-          for(let i=0;i<3;i++){
-            document.getElementById("yourAnswers").innerHTML = `
-              <h2>Hi</h2>
-            `;
-          }
-
-          */
 
           document.getElementById("next-btn").style.display = "none";
           document.getElementById("marks").innerHTML = "Your marks is: " + marks;

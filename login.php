@@ -16,11 +16,14 @@
             $hashedPassword = $row['pswd'];
 
             if($row['role'] == 'admin'){
+                $_SESSION['user_id'] = $row['userid'];
+                $_SESSION['usertype'] = 'admin';
                 header("Location: admin.php");
             }else{
                 if(password_verify($pswd,$hashedPassword)){
                     $_SESSION['user_id'] = $row['userid'];
                     $_SESSION['fname'] = $row['fname'];
+                    $_SESSION['usertype'] = 'user';
                     header("Location: index.php");
                     // if this is incorrect there will be an error
                 }
