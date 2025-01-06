@@ -1,28 +1,8 @@
-Scores must be shown after ending of quizzes and what are the correct and incorrect answers
+Now we have to create the part of calculating the marks. We will calculate the marks based on the correct answers given by the user. We will also save the result to the server.
 
+create leaderboard.php file and add leaderboard feature
 
-
-<!--
-              <h2>Question ${index + 1} of ${questions.length}</h2>
-          <p class="question-text">${question.question}</p>
-          <ul class="options-list">
-            ${question.options
-              .map(
-                (option, i) => `
-              <li>
-                <input type="radio" name="answer" id="option${i}" value="${i}">
-                <label for="option${i}">${option}</label>
-              </li>
-            `
-              )
-              .join("")}
-          </ul>
-          <input type="hidden" id="correct-answer" value="${question.correct_option}">
-            -->
-
-
-add a fieldname about who has added the question and show it in the quiz result page
-
+errors showing
 
 
 //from this we create the part of calculating marks
@@ -51,53 +31,3 @@ fetch('save_results.php', {
   .catch(error => console.error("Error saving results:", error));
 
 
-  <?php
-require_once 'connection/connection.php';
-
-$data = json_decode(file_get_contents('php://input'), true);
-
-if (isset($data['totalFaced']) && isset($data['correctAnswers'])) {
-    $totalFaced = $data['totalFaced'];
-    $correctAnswers = $data['correctAnswers'];
-    $category = $data['category'];
-    $language = $data['language'];
-    $created = $data['created'];
-
-    $sql = "INSERT INTO quiz_results (user_id, total_faced, correct_answers, category, language, created_date) 
-            VALUES (?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-
-    // Replace '1' with the actual user ID if you have user management implemented
-    $userId = 1; 
-
-    if ($stmt) {
-        $stmt->bind_param("iiisss", $userId, $totalFaced, $correctAnswers, $category, $language, $created);
-        if ($stmt->execute()) {
-            echo "Results saved successfully.";
-        } else {
-            echo "Error: " . $stmt->error;
-        }
-        $stmt->close();
-    } else {
-        echo "Error preparing statement: " . $conn->error;
-    }
-} else {
-    echo "Invalid data received.";
-}
-
-$conn->close();
-?>
-
-
-CREATE TABLE quiz_results (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    total_faced INT NOT NULL,
-    correct_answers INT NOT NULL,
-    category VARCHAR(255) NOT NULL,
-    language VARCHAR(255) NOT NULL,
-    created_date DATETIME NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-      */

@@ -4,23 +4,9 @@
 <?php
     session_start();
 
-    $sql = "SELECT * FROM quizzes WHERE createdby='{$_SESSION['user_id']}'";
-    $result = mysqli_query($connection,$sql);
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $g = explode(',', $row['options']);
-            echo "<div class='card' style='width: 18rem;'>" . 
-                    "<div class='card-body'>" . 
-                        "<h5 class='card-title'>Quiz By " . $row['createdby'] . "</h5>" .
-                        "<p class='card-text'>" . $row['question'] . "</p>" .
-                    "</div>" .      
-                    "<ul class='list-group
-                    list-group-flush'>"; 
-                        foreach($g as $i){
-                            echo "<li class='list-group-item'>" . $i . "</li>";
-                        }
-                        echo "<li class='list-group-item'>Correct answer: " . $row['correct_option'] . "</li>";}}
+    if(!isset($_SESSION['user_id'])){
+        header('Location: login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +19,20 @@
     <?php require_once 'nav.php'; ?>
     <div class="container">
         <h2 class="text-center" style="margin-top: 20px;">My Quizes</h2>
-        
+        <?php
+            $sql = "SELECT * FROM quizzes WHERE userid='{$_SESSION['user_id']}'";
+            $result = mysqli_query($connection,$sql);
+
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    echo "<div class='card'>" . 
+                            "<div class='card-body'>" . 
+                                $row['question'] . 
+                            "</div>" . 
+                        "</div><br>";
+                }
+            }
+        ?>
     </div>
 </body>
 </html>

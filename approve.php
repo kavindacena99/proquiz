@@ -2,6 +2,12 @@
     require_once 'connection/connection.php';
 ?>
 <?php
+    session_start();
+
+    if($_SESSION['usertype'] != 'admin' || !isset($_SESSION['user_id'])){
+        header('Location: login.php');
+    }
+
     $id = $_GET['poolid'];
     $action = $_GET['action'];
 

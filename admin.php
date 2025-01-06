@@ -3,6 +3,10 @@
 ?>
 <?php
     session_start();
+
+    if($_SESSION['usertype'] != 'admin' || !isset($_SESSION['user_id'])){
+        header('Location: login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

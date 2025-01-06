@@ -4,6 +4,10 @@
 <?php
     session_start();
 
+    if(!isset($_SESSION['user_id'])){
+        header('Location: login.php');
+    }
+
     if(isset($_POST['put'])){
         $quiz = mysqli_real_escape_string($connection, $_POST['quiz']);
 

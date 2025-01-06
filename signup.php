@@ -2,6 +2,13 @@
     require_once 'connection/connection.php';
 ?>
 <?php
+    session_start();
+
+    if(isset($_SESSION['user_id'])){
+        header("Location: index.php");
+    }
+?>
+<?php
     if(isset($_POST['signup'])){
         $mail = mysqli_real_escape_string($connection,$_POST['mail']);
         $fname = mysqli_real_escape_string($connection,$_POST['fname']);
@@ -24,8 +31,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">

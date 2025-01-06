@@ -2,6 +2,12 @@
     require_once 'connection/connection.php';
 ?>
 <?php
+    session_start();
+
+    if(!isset($_SESSION['user_id'])){
+        header('Location: login.php');
+    }
+
     $lang = $_GET['language'];
     $category = $_GET['category'];
     $noOfQuizes = $_GET['noofquizes'];
