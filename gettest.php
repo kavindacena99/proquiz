@@ -22,14 +22,6 @@
         <h2 class="text-center" style="margin-top:15px">Select your choices</h2>
         <form action="quizes.php" method="GET">
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Created by</label>
-                <select class="form-select" aria-label="Default select example" name="created">
-                    <option selected>Select a quiz category</option>
-                    <option value="add">Created by users</option>
-                    <option value="sys">By ProQuiZ</option>
-                </select>
-            </div>
-            <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Quiz Category</label>
                 <select class="form-select" aria-label="Default select example" name="category">
                     <option selected>Select a quiz category</option>

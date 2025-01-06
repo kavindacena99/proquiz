@@ -7,7 +7,7 @@
   $lang = $_GET['lang'];
   $category = $_GET['category'];
   $noOfQuizes = $_GET['noofquizes'];
-  $created = $_GET['created'];
+  //$created = $_GET['created'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,10 +107,10 @@
       const lang = "<?php echo $lang; ?>";
       const category = "<?php echo $category; ?>";
       const noOfQuizes = "<?php echo $noOfQuizes; ?>";
-      const created = "<?php echo $created; ?>";
+      //const created = "<?php echo $created; ?>";
 
       function fetchQuestions(){
-        const url = `fetch.php?category=${encodeURIComponent(category)}&language=${encodeURIComponent(lang)}&noofquizes=${encodeURIComponent(Number(noOfQuizes))}&created=${encodeURIComponent(created)}`;
+        const url = `fetch.php?category=${encodeURIComponent(category)}&language=${encodeURIComponent(lang)}&noofquizes=${encodeURIComponent(Number(noOfQuizes))}`;
         fetch(url).then(response => response.json()).then(data => { questions = data; loadQuestion(currentQuestionIndex); }).catch(error => console.error("Error fetching:", error));
       }
 
