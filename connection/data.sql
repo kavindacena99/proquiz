@@ -5,6 +5,7 @@ create table users(userid INT primary key auto_increment,fname varchar(255),lnam
 insert into users (fname,lname,mail,pswd,marks,role) values('Kavnda','Supun','kavinda@gmail.com','123456',0,'admin');
 
 create table quizzes(qid INT primary key auto_increment,question text,options text,correct_option INT,category varchar(50),qlang varchar(25),createdby INT default 0);
+alter table quizzes add column userid INT default 0;
 
 create table quizpool(qpid INT primary key auto_increment,question text,options text,correct_option INT,category varchar(50),qlang varchar(25),approved INT,userid INT);
 

@@ -16,7 +16,7 @@
     .card {
       border: none;
       transition: transform 0.3s, box-shadow 0.3s;
-    } 
+    }
     .card:hover {
       transform: scale(1.02);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -24,11 +24,11 @@
   </style>
 </head>
 <body>
-  
+
   <?php require_once 'nav.php'; ?>
 
   <div class="container">
-    <h1 class="text-center" style="margin-top: 18px;margin-bottom:80px;"><?php if(isset($_SESSION['user_id'])){echo"Hi " . $_SESSION['fname'];} ?>, Welcome to <span class="brandname">ProQuiZ</span></h1>
+    <h1 class="text-center" style="margin-top: 18px;margin-bottom:80px;"><?php if(isset($_SESSION['user_id'])){echo"Hi " . $_SESSION['fname'] . ",";} ?> Welcome to <span class="brandname">ProQuiZ</span></h1>
 
     <div class="row">
       <div class="col-md-6 mb-4">

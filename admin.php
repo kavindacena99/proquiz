@@ -29,7 +29,6 @@
                                     "<div class='card-body'>" . 
                                         "<h5 class='card-title'>Quiz By " . $row['userid'] . "</h5>" . 
                                         "<p class='card-text'>" . $row['question'] . "</p>" . 
-                                        "<p class='card-text'>" . $row['question'] . "</p>" . 
                                     "</div>" . 
                                     "<ul class='list-group list-group-flush'>"; 
                                         foreach($g as $i){
@@ -50,7 +49,21 @@
             </div>
             <div class="col-md-6">
                 <h3>Questions</h3>
-                <a href="addquestion.php" class="btn btn-dark">Add Question</a>
+                <a href="addquestion.php" class="btn btn-dark">Add Question</a> <br><br>
+                <?php
+                    $sql = "SELECT * FROM quizzes";
+                    $result = mysqli_query($connection,$sql);
+
+                    if($result->num_rows > 0){
+                        while($row = $result->fetch_assoc()){
+                            echo "<div class='card'>" . 
+                                    "<div class='card-body'>" . 
+                                        $row['question'] . 
+                                    "</div>" . 
+                                "</div><br>";
+                        }
+                    }
+                ?>
             </div>
         </div>
     </div>
