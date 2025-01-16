@@ -25,7 +25,8 @@
                     $_SESSION['fname'] = $row['fname'];
                     $_SESSION['usertype'] = 'user';
                     header("Location: index.php");
-                    // if this is incorrect there will be an error
+                }else{
+                    echo "<script>alert('Incorrect Password')</script>";
                 }
             }
         }

@@ -11,7 +11,6 @@
     $lang = $_GET['language'];
     $category = $_GET['category'];
     $noOfQuizes = $_GET['noofquizes'];
-    //$created = $_GET['created'];
 
     if($category == "normal"){
         $sql = "SELECT * FROM quizzes WHERE qlang = '{$lang}' LIMIT $noOfQuizes";

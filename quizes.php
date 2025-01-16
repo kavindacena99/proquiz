@@ -11,7 +11,6 @@
   $lang = $_GET['lang'];
   $category = $_GET['category'];
   $noOfQuizes = $_GET['noofquizes'];
-  //$created = $_GET['created'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,9 +94,6 @@
           </ul>
           <input type="hidden" id="correct-answer" value="${question.correct_option}">
         `;
-
-        //console.log("This is for testing: " + question[index][0]);
-
         // Enable the Next button once an option is selected
         const options = document.querySelectorAll('input[name="answer"]');
 
@@ -111,7 +107,6 @@
       const lang = "<?php echo $lang; ?>";
       const category = "<?php echo $category; ?>";
       const noOfQuizes = "<?php echo $noOfQuizes; ?>";
-      //const created = "<?php echo $created; ?>";
 
       function fetchQuestions(){
         const url = `fetch.php?category=${encodeURIComponent(category)}&language=${encodeURIComponent(lang)}&noofquizes=${encodeURIComponent(Number(noOfQuizes))}`;
@@ -132,21 +127,41 @@
 
         currentQuestionIndex++;
 
+        //start
+
         if (currentQuestionIndex < questions.length) {
           loadQuestion(currentQuestionIndex);
           document.getElementById("next-btn").disabled = true;
         } else {
-          // we should implement parts to view marks and other things with redirecting other page
+          // Save marks to the database
+          fetch("savemarks.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `marks=${marks}`,
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === "success") {
+              console.log("Marks saved successfully.");
+            } else {
+              console.error("Error saving marks:", data.message);
+            }
+          })
+          .catch(error => console.error("Error:", error));
+
+          // Display results
           document.getElementById("quiz-container").innerHTML = `
-            <h2 id="marks"></h2>
-            <h2>You've completed the quiz!</h2>
-            <p>Thank you for participating.</p>
-            <a href="index.php" class="btn btn-dark">Go back to home</a>
-            <a href="gettest.php" class="btn btn-dark">Take another quiz</a>
+              <h2 id="marks"></h2>
+              <h2>You've completed the quiz!</h2>
+              <p>Thank you for participating.</p>
+              <a href="index.php" class="btn btn-dark">Go back to home</a>
+              <a href="gettest.php" class="btn btn-dark">Take another quiz</a>
           `;
 
           document.getElementById("next-btn").style.display = "none";
-          document.getElementById("marks").innerHTML = "Your marks is: " + marks;
+          document.getElementById("marks").innerHTML = "Your marks are: " + marks;
         }
       });
 

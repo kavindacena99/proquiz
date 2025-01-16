@@ -113,7 +113,6 @@
                     <option value="cpp">C++</option>
                     <option value="c">C</option>
                     <option value="mysql">MySQL</option>
-                    <!-- <option value="all">All</option> -->
                 </select>
             </div>
 
